@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-void tokenize(char *arr[], char *buf);
-void execute(char *arr[], char *envp[]);
+#include "shell.h"
 
 /**
  * main - main method
