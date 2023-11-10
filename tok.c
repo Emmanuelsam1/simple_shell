@@ -8,7 +8,7 @@
  */
 void tokenize(char *arr[], char *buf)
 {
-	char *del = "\t\n";
+	char *del = " \t\n";
 	char *tok;
 	int i = 0;
 
