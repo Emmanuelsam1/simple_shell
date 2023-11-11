@@ -14,6 +14,6 @@
 
 void tokenize(char *arr[], char *buf);
 void execute(char *arr[], char *envp[]);
-
+void print_environ(char *environ[]);
 
 #endif

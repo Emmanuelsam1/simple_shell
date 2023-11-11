@@ -1,14 +1,17 @@
 #include "shell.h"
+#include <unistd.h>
+
+extern char **environ;
 
 /**
  * main - main method
  * Return: 0
  */
+
 int main(void)
 {
 	char *buf = NULL;
 	size_t n = 0;
-	char *envp[] = {NULL};
 	char **arr;
 
 	while (1)
@@ -21,15 +24,20 @@ int main(void)
 			break;
 		}
 
+		else if (strcmp(buf, "env\n") == 0)
+		{
+            		print_environ(environ);
+		}
+		else
+		{
+			tokenize(arr, buf);
 
-
-		tokenize(arr, buf);
-
-		execute(arr, envp);
-		free(arr);
-
+			execute(arr, environ);
+			free(arr);
+		}
 	}
-	free(buf);
 
-	return (0);
+		free(buf);
+
+		return (0);
 }
