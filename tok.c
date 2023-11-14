@@ -1,7 +1,4 @@
 #include "shell.h"
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
  * tokenize - tok the command
@@ -12,45 +9,59 @@ void tokenize(char *arr[], char *buf)
 {
 	char *del = " \t\n";
 	char *tok;
-	char *tok2;
-	char *del2 = ":";
-	char join_pth[1024];
+
 	int i = 0;
-	int x = 0;
 
 	char *tok1;
 	char *del1 = "/\t\n";
 	char **a = malloc(sizeof(char *) * 1024);
 	int z = 0;
 
-	char *pth = getenv("PATH");
-	char *pth_cp = strdup(pth);
 
-	tok = strtok(buf, del);
+
+	tok = _strtok(buf, del);
 
 	while (tok)
 	{
 		arr[i] = tok;
-		tok = strtok(NULL, del);
+		tok = _strtok(NULL, del);
 		i++;
 	}
 	arr[i] = NULL;
 
-	tok1 = strtok(arr[0], del1);
+	tok1 = _strtok(arr[0], del1);
 
 	while (tok1)
 	{
 		a[z] = tok1;
-		tok1 = strtok(NULL, del1);
+		tok1 = _strtok(NULL, del1);
 		z++;
 	}
 	z--;
 
-	tok2 = strtok(pth_cp, del2);
+	token_path(arr, a[z]);
+}
+
+/**
+ * token_path - tokenize path
+ * @arr: command
+ * @y: the element to join with pth to compare
+ */
+
+void token_path(char *arr[], char *y)
+{
+	char *tok2;
+	char *del2 = ":";
+	char join_pth[1024];
+	char *pth = getenv("PATH");
+	char *pth_cp = strdup(pth);
+	int x;
+
+	tok2 = _strtok(pth_cp, del2);
 
 	while (tok2)
 	{
-		sprintf(join_pth, "%s/%s", tok2, a[z]);
+		sprintf(join_pth, "%s/%s", tok2, y);
 
 		if (access(join_pth, F_OK) == 0)
 		{
@@ -58,7 +69,7 @@ void tokenize(char *arr[], char *buf)
 			break;
 		}
 
-		tok2 = strtok(NULL, del2);
+		tok2 = _strtok(NULL, del2);
 	}
 
 	if (x == 1)
@@ -68,4 +79,5 @@ void tokenize(char *arr[], char *buf)
 		perror("./shell not found");
 		exit(1);
 	}
+	free(pth_cp);
 }

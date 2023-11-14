@@ -1,21 +1,19 @@
-#include <stdio.h>
+#include "shell.h"
 
 /**
- * main - main method
- * Return: 0
+ * check_betty - passes betty
+ * Return: nain
  */
-int main(void)
+
+void check_betty(void)
 {
 	int i;
-
-	printf("Single digit numbers are: ");
-
+	char *a;
+	a = malloc(sizeof(char) * 10);
+	if (a == NULL)
+		exit(1);
 	for (i = 0; i < 10; i++)
 	{
-		if (i == 9)
-			printf("%d\n", i);
-		else
-			printf("%d, ", i);
+		a[i] = 5;
 	}
-	return (0);
 }
