@@ -13,7 +13,8 @@
 #include <errno.h>
 
 void tokenize(char *arr[], char *buf);
-void execute(char *arr[], char *envp[]);
+void execute(char **args, char **envp);
 void print_environ(char *environ[]);
+void parse_input(char *input, char **args);
 
 #endif
