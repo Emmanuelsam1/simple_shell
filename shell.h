@@ -16,5 +16,12 @@ void tokenize(char *arr[], char *buf);
 void execute(char **args, char **envp);
 void print_environ(char *environ[]);
 void parse_input(char *input, char **args);
+void execute(char *arr[], char *envp[]);
+void print_environ(void);
+void check_betty(void);
+void token_path(char *arr[], char *y);
+extern char **environ;
+char *_strtok(char *s, const char *del);
+char *_getline(void);
 
 #endif
