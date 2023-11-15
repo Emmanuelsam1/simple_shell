@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _srttok - strtok function
+ * _strtok - strtok function
  * @s: the character
  * @del: the delimeter
  * Return: pointer to the token
@@ -9,7 +9,7 @@
 char *_strtok(char *s, const char *del)
 {
 	char *first;
-	static char *tok_pntr = NULL;
+	static char *tok_pntr;
 
 	if (s != NULL)
 		tok_pntr = s;

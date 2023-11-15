@@ -14,6 +14,8 @@ int main(void)
 	char *envp[] = {NULL};
 
 	check_betty();
+	_setenv();
+	_unsetenv("LANG");
 
 	while (1)
 	{
@@ -32,7 +34,12 @@ int main(void)
 		{
 			tokenize(arr, buf);
 
-			execute(arr, envp);
+			if (strcmp(arr[0], "cd") == 0)
+			{
+				_cd(arr);
+			}
+			else
+				execute(arr, envp);
 		}
 		free(arr[0]);
 		free(arr);

@@ -9,6 +9,7 @@ void check_betty(void)
 {
 	int i;
 	char *a;
+
 	a = malloc(sizeof(char) * 10);
 	if (a == NULL)
 		exit(1);

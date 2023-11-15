@@ -2,10 +2,10 @@
 
 /**
  * _getline - gets a line inputed from user
- * @n: the size of data
  * Return: the line
  */
 #define n 4096
+
 char *_getline(void)
 {
 	static char data[n];
@@ -21,7 +21,7 @@ char *_getline(void)
 	printf("#cisfun$ ");
 	fflush(stdout);
 
-	check = read(STDIN_FILENO, data,n);
+	check = read(STDIN_FILENO, data, n);
 
 	if (check <= 0)
 		return (NULL);

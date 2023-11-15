@@ -39,7 +39,9 @@ void tokenize(char *arr[], char *buf)
 	}
 	z--;
 
-	token_path(arr, a[z]);
+	if (strcmp(arr[0], "cd") != 0)
+		token_path(arr, a[z]);
+
 }
 
 /**
@@ -56,6 +58,7 @@ void token_path(char *arr[], char *y)
 	char *pth = getenv("PATH");
 	char *pth_cp = strdup(pth);
 	int x;
+
 
 	tok2 = _strtok(pth_cp, del2);
 
@@ -77,7 +80,9 @@ void token_path(char *arr[], char *y)
 	else
 	{
 		perror("./shell not found");
+		free(pth_cp);
 		exit(1);
+
 	}
 	free(pth_cp);
 }
