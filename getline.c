@@ -18,9 +18,6 @@ char *_getline(void)
 	if (!theLine)
 		exit(1);
 
-	printf("#cisfun$ ");
-	fflush(stdout);
-
 	check = read(STDIN_FILENO, data, n);
 
 	if (check <= 0)
