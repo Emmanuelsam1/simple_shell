@@ -20,6 +20,7 @@ int main(void)
 	while (1)
 	{
 		printf("#cisfun$ ");
+		fflush(stdout);
 		buf = _getline();
 
 		if (strcmp(buf, "exit\n") == 0)
