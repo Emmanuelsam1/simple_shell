@@ -19,6 +19,7 @@ int main(void)
 
 	while (1)
 	{
+		printf("#cisfun$ ");
 		buf = _getline();
 
 		if (strcmp(buf, "exit\n") == 0)
